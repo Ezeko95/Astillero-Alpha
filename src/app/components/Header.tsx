@@ -8,14 +8,14 @@ const Carrousel: React.FC = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="max-w-screen h-screen relative">
+    <div className="">
       <div
-        className="max-w-screen h-screen bg-center bg-no-repeat bg-cover duration-500"
+        className="absolute inset-0 bg-cover bg-center duration-[2000ms]"
         style={{
           backgroundImage: `url(${images[index].url})`,
         }}
@@ -26,18 +26,16 @@ const Carrousel: React.FC = () => {
 
 const Header: React.FC = () => {
   return (
-    <header className="relative">
+    <header className="relative h-screen overflow-hidden">
       <Carrousel />
-      <div className="absolute inset-0 bg-black opacity-50" />
-      <div className="relative z-10 flex items-center justify-center h-screen">
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-5xl font-bold text-white uppercase">
-            Astillero Alpha
-          </h1>
-          <h2 className="text-2xl font-semibold text-white uppercase">
-            Creado por Gianluca Cianchi
-          </h2>
+      <div className="relative mt-20 flex items-start justify-center h-screen">
+        <div className="flex flex-col items-center justify-center gap-y-[500px]">
+          <img src="/logo-no-bg.png" alt="logo" />
+          <a className="text-white bg-transparent border-2 border-white transition-transform duration-500 transform hover:bg-white hover:text-black hover:scale-110 hover:shadow-r-md px-5 py-2 rounded-md text-2xl inline-block">
+            Contacto
+          </a>
         </div>
+        <div></div>
       </div>
     </header>
   );
